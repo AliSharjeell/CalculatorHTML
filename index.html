@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            zoom: 200%;
+            background-color: black;
+            font-family: 'Arial', sans-serif;
+        }
+        .box1{
+            background-color: rgb(255, 165, 0);
+            color: white;
+            width: 40px;
+            height:40px;
+            border-style:solid;
+            border-width: 0.01px;
+            border-radius: 100%;
+            margin: 2px;
+        }
+        .box1:hover{
+            cursor: pointer;
+            background-color: rgb(255, 179, 36);
+        }
+        .box2:hover{
+            cursor: pointer;
+            background-color: rgb(77, 77, 77);
+        }
+        .box3:hover{
+            cursor: pointer;
+            background-color: rgb(195, 195, 195);
+        }
+        .b{
+            display: flex;
+            border-style: none;
+        }
+        #box{
+            text-align: end;
+            font-size: 40px;
+           width: 150px;
+           height: 60px;
+           background-color: black;
+           color: white;
+           border-style: none;
+        }
+        .box2{
+            background-color: rgb(54, 54, 54);
+            color: white;
+            width: 40px;
+            height:40px;
+            border-style:solid;
+            border-width: 0.01px;
+            border-radius: 100%;
+            margin: 2px;
+        }
+        .box3{
+            background-color: rgb(156, 156, 156);
+            color: rgb(0, 0, 0);
+            width: 40px;
+            height:40px;
+            border-style:solid;
+            border-width: 0.01px;
+            border-radius: 100%;
+            margin: 2px;
+        }
+        .e1{
+            width: 83px;
+            height: 40px;
+            border-radius: 30px;  
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 39vh;
+        }
+        .navname{
+           color: white;
+           font-weight: bold;
+           position: relative;  
+           font-size: 12px;
+           margin-left:60px;   
+           margin-top:20px; 
+        }
+        .divb{
+            position: relative;
+            right:0px;
+            bottom: -1px;
+            width: 16px;
+            height:auto;
+        }
+        @media only screen and (max-width: 600px) {
+
+         body {
+            zoom: 150%;
+         }
+         .navname{
+           color: white;
+           font-weight: bold;
+           position: absolute;  
+           font-size: 12px;
+           margin-left:20px;   
+           margin-top:20px; 
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 55vh;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <p class="navname">Calculator</p>
+            </nav>
+    </header>
+    <div class="space"></div>
+    <div class="main">
+    <input id="box" readonly>
+    <div class="b">
+    <br>
+    <button class="box3" onclick="c()" id="c">AC</button>
+    <button class="box3" onclick="neg()" id="+/-">+/-</button>
+    <button class="box3" onclick="append('%')" id="%">%</button>
+    <button class="box1" onclick="append('/')" id="/"> <img class="divb" src="./div.png"></img></button>
+</div>
+    <div class="b">
+    <br>
+    <button class="box2" onclick="append('7')" id="7">7</button>
+    <button class="box2" onclick="append('8')" id="8">8</button>
+    <button class="box2" onclick="append('9')" id="9">9</button>
+    <button class="box1" onclick="append('*')" id="x">x</button>
+</div>
+    <div class="b">
+    <br>
+    <button class="box2" onclick="append('4')" id="4">4</button>
+    <button class="box2" onclick="append('5')" id="5">5</button>
+    <button class="box2" onclick="append('6')" id="6">6</button>
+    <button class="box1" onclick="append('-')" id="-">-</button>
+</div>
+<div class="b">
+    <br>
+    <button class="box2" onclick="append('1')" id="1">1</button>
+    <button class="box2" onclick="append('2')" id="2">2</button>
+    <button class="box2" onclick="append('3')" id="3">3</button>
+    <button class="box1" onclick="append('+')" id="+">+</button>
+</div>
+<div class="b">
+    <br>
+    <button class="box2 e1" onclick="append('0')" id="0">0</button>
+    <button class="box2" onclick="append('.')" id=".">.</button>
+    <button class="box1" onclick="calcu()" id="=">=</button>
+</div>
+</div>
+    <script>
+        document.getElementById('box').value=0;
+        function append(val){
+            if(document.getElementById('box').value==0){
+                document.getElementById('box').value='';
+            }
+            document.getElementById('box').value+=val;
+        }
+        function c(){
+            document.getElementById('box').value=0;
+        }
+        function calcu(){
+            result=document.getElementById('box');
+            result=eval(result.value);
+            document.getElementById('box').value=result;
+        }
+        function neg(){
+            document.getElementById('box').value=-1*(document.getElementById('box').value);
+        }
+    </script>
+</body>
+</html>
